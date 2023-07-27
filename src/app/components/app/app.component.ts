@@ -1,28 +1,17 @@
 import {Component} from '@angular/core';
-import {User} from "../../types";
+import {UsersService} from "../../data/users.service";
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [UsersService]
 })
 export class AppComponent {
-  users: User[] = [
-    {
-      id: '1',
-      name: 'John Doe',
-      active: true
-    },
-    {
-      id: '2',
-      name: 'Jane Doe',
-      active: true
-    },
-    {
-      id: '3',
-      name: 'Jake Dough',
-      active: false
-    },
-  ]
+  users$ = this.service.getAllUsers()
+
+  constructor(private service: UsersService) {
+  }
+
 }

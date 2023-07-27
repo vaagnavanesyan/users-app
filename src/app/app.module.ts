@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './components/app';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
+import {UsersQuery} from "./data/users.query";
+import {UsersStore} from "./data/users.store";
 
 @NgModule({
   declarations: [
@@ -12,7 +14,6 @@ import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
     BrowserModule,
     AkitaNgDevtools.forRoot()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
