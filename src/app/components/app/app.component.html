@@ -1,0 +1,19 @@
+<div class="table-wrapper">
+  <table class="table">
+    <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Active</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>
+        <input type="checkbox" [checked]="user.active">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
