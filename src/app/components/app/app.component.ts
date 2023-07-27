@@ -10,6 +10,7 @@ import {UsersService} from "../../data/users.service";
 })
 export class AppComponent {
   users$ = this.service.getAllUsers()
+  canAddUsers$ = this.service.canAddUsers$;
 
   constructor(private service: UsersService) {
   }

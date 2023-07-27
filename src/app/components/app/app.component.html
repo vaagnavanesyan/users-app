@@ -15,5 +15,5 @@
     </tr>
     </tbody>
   </table>
-
 </div>
+<button [disabled]="!(canAddUsers$ | async)">Add user</button>
