@@ -5,6 +5,7 @@ import {AppComponent} from './components/app';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
 import {AddUserModalComponent} from './components/add-user-modal';
 import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     AkitaNgDevtools.forRoot(),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
