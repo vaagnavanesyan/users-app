@@ -14,4 +14,7 @@ export class AppComponent {
   constructor(private service: UsersService) {
   }
 
+  handleChangeActive(id: string) {
+    this.service.toggleActive(id)
+  }
 }

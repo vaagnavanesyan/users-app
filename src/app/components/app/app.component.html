@@ -10,7 +10,7 @@
       <td>{{user.id}}</td>
       <td>{{user.name}}</td>
       <td>
-        <input type="checkbox" [checked]="user.active">
+        <input type="checkbox" [checked]="user.active" (change)="handleChangeActive(user.id)">
       </td>
     </tr>
     </tbody>
