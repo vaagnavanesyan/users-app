@@ -8,23 +8,21 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {AddUserModalComponent} from "./components/add-user-modal";
-import {FormsModule} from "@angular/forms";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddUserModalComponent
   ],
   imports: [
     BrowserModule,
     AkitaNgDevtools.forRoot(),
     BrowserAnimationsModule,
+    MatDialogModule,
     MatTableModule,
     MatSlideToggleModule,
     MatButtonModule,
-    MatTooltipModule,
-    FormsModule
+    MatTooltipModule
   ],
   bootstrap: [AppComponent]
 })

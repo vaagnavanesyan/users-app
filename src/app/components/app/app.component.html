@@ -21,7 +21,9 @@
 <span [matTooltipDisabled]="(canAddUsers$ | async) ?? true" class="add-user-btn"
       matTooltip="You should have less than 5 users and all of them should be active">
   <button
-    (click)="isModalOpen = true" [disabled]="!(canAddUsers$ | async)" color="primary"
-    mat-raised-button>Add user</button>
+    (click)="handleAddUser()"
+    [disabled]="!(canAddUsers$ | async)"
+    color="primary"
+    mat-raised-button
+  >Add user</button>
 </span>
-<app-add-user-modal (close)="handleModalClose($event)" *ngIf="isModalOpen"></app-add-user-modal>

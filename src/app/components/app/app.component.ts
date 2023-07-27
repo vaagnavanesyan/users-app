@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {UsersService} from "../../data/users.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AddUserModalComponent} from "../add-user-modal";
 import {AddUserDto} from "../../types/add-user-dto";
 
 
@@ -13,20 +15,23 @@ export class AppComponent {
   columnsToDisplay = ['id', 'name', 'active'];
   users$ = this.service.getAllUsers()
   canAddUsers$ = this.service.canAddUsers$;
-  isModalOpen = false;
 
-  constructor(private service: UsersService) {
+  constructor(private service: UsersService,
+              public dialog: MatDialog) {
   }
 
   handleChangeActive(id: string) {
     this.service.toggleActive(id)
   }
 
-  handleModalClose(user?: AddUserDto) {
-    this.isModalOpen = false;
-    if (user) {
+  handleAddUser(): void {
+    const dialogRef = this.dialog.open(AddUserModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      const user = result as AddUserDto;
+      if (!user) return;
       this.service.addUser(user)
-    }
+    });
   }
 
 }

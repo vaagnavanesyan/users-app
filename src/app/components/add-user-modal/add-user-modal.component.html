@@ -1,19 +1,16 @@
-<div class="modal-container">
-  <div class="modal-content">
-    <h1>Add new User</h1>
-    <form #userForm="ngForm">
+<h1 mat-dialog-title>Add New User</h1>
+<div mat-dialog-content>
+  <mat-form-field [formControl]="name" ngDefaultControl>
+    <mat-label>Name</mat-label>
+    <input [(ngModel)]="model.name" matInput required>
+  </mat-form-field>
 
-      <div class="form-control">
-        <label for="name">Name:</label>
-        <input [(ngModel)]="model.name" id="name" name="name" required type="text">
-      </div>
-
-      <div class="form-control">
-        <label for="name">Is Active?</label>
-        <input [(ngModel)]="model.active" id="active" name="active" type="checkbox">
-      </div>
-    </form>
-    <button (click)="handleSubmit()" [disabled]="!userForm.form.valid">Add user</button>
-    <button (click)="handleClose()">Cancel</button>
+  <div>
+    <mat-label>Active?</mat-label>
+    <mat-slide-toggle [(ngModel)]="model.active"></mat-slide-toggle>
   </div>
+</div>
+<div mat-dialog-actions>
+  <button (click)="onCancel()" mat-button>Cancel</button>
+  <button [disabled]="!name.valid" [mat-dialog-close]="model" mat-button>Add</button>
 </div>
