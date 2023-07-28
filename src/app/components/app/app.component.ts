@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {UsersService} from "../../data/users.service";
+import {AddUserDto} from "../../types/add-user-dto";
 
 
 @Component({
@@ -11,6 +12,7 @@ import {UsersService} from "../../data/users.service";
 export class AppComponent {
   users$ = this.service.getAllUsers()
   canAddUsers$ = this.service.canAddUsers$;
+  isModalOpen = false;
 
   constructor(private service: UsersService) {
   }
@@ -18,4 +20,12 @@ export class AppComponent {
   handleChangeActive(id: string) {
     this.service.toggleActive(id)
   }
+
+  handleModalClose(user?: AddUserDto) {
+    this.isModalOpen = false;
+    if (user) {
+      this.service.addUser(user)
+    }
+  }
+
 }

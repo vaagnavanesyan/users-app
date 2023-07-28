@@ -2,6 +2,8 @@ import {Injectable} from "@angular/core";
 import {UsersQuery} from "./users.query";
 import {UsersStore} from "./users.store";
 import {map, zip} from "rxjs";
+import {AddUserDto} from "../types/add-user-dto";
+import {nanoid} from "nanoid";
 
 @Injectable({providedIn: 'root'})
 export class UsersService {
@@ -35,5 +37,8 @@ export class UsersService {
         active: !user.active
       }
     })
+  }
+  addUser(user: AddUserDto) {
+    this.usersStore.add({id: nanoid(), ...user})
   }
 }

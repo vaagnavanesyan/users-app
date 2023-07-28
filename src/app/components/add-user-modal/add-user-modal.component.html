@@ -1,0 +1,19 @@
+<div class="modal-container">
+  <div class="modal-content">
+    <h1>Add new User</h1>
+    <form #userForm="ngForm">
+
+      <div class="form-control">
+        <label for="name">Name:</label>
+        <input [(ngModel)]="model.name" id="name" name="name" required type="text">
+      </div>
+
+      <div class="form-control">
+        <label for="name">Is Active?</label>
+        <input [(ngModel)]="model.active" id="active" name="active" type="checkbox">
+      </div>
+    </form>
+    <button (click)="handleSubmit()" [disabled]="!userForm.form.valid">Add user</button>
+    <button (click)="handleClose()">Cancel</button>
+  </div>
+</div>

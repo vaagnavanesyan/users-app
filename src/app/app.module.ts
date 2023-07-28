@@ -3,16 +3,18 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './components/app';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
-import {UsersQuery} from "./data/users.query";
-import {UsersStore} from "./data/users.store";
+import {AddUserModalComponent} from './components/add-user-modal';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddUserModalComponent
   ],
   imports: [
     BrowserModule,
-    AkitaNgDevtools.forRoot()
+    AkitaNgDevtools.forRoot(),
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -16,4 +16,5 @@
     </tbody>
   </table>
 </div>
-<button [disabled]="!(canAddUsers$ | async)">Add user</button>
+<button (click)="isModalOpen = true" [disabled]="!(canAddUsers$ | async)">Add user</button>
+<app-add-user-modal (close)="handleModalClose($event)" *ngIf="isModalOpen"></app-add-user-modal>
