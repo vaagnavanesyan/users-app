@@ -3,9 +3,13 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './components/app';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
-import {AddUserModalComponent} from './components/add-user-modal';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatTableModule} from "@angular/material/table";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {AddUserModalComponent} from "./components/add-user-modal";
 import {FormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -15,8 +19,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   imports: [
     BrowserModule,
     AkitaNgDevtools.forRoot(),
-    FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatTooltipModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

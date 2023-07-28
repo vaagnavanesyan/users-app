@@ -1,20 +1,27 @@
-<div class="table-wrapper">
-  <table class="table">
-    <thead>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Active</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of users$ | async">
-      <td>{{user.id}}</td>
-      <td>{{user.name}}</td>
-      <td>
-        <input type="checkbox" [checked]="user.active" (change)="handleChangeActive(user.id)">
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<button (click)="isModalOpen = true" [disabled]="!(canAddUsers$ | async)">Add user</button>
+<table [dataSource]="users$" mat-table>
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> ID</th>
+    <td *matCellDef="let user" mat-cell> {{user.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell> Name</th>
+    <td *matCellDef="let user" mat-cell> {{user.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="active">
+    <th *matHeaderCellDef mat-header-cell> Active?</th>
+    <td *matCellDef="let user" mat-cell>
+      <mat-slide-toggle (click)="handleChangeActive(user.id)" [checked]="user.active"></mat-slide-toggle>
+    </td>
+  </ng-container>
+  <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+  <tr *matRowDef="let myRowData; columns: columnsToDisplay" mat-row></tr>
+</table>
+<span [matTooltipDisabled]="(canAddUsers$ | async) ?? true" class="add-user-btn"
+      matTooltip="You should have less than 5 users and all of them should be active">
+  <button
+    (click)="isModalOpen = true" [disabled]="!(canAddUsers$ | async)" color="primary"
+    mat-raised-button>Add user</button>
+</span>
 <app-add-user-modal (close)="handleModalClose($event)" *ngIf="isModalOpen"></app-add-user-modal>

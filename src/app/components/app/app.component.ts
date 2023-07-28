@@ -10,6 +10,7 @@ import {AddUserDto} from "../../types/add-user-dto";
   providers: [UsersService]
 })
 export class AppComponent {
+  columnsToDisplay = ['id', 'name', 'active'];
   users$ = this.service.getAllUsers()
   canAddUsers$ = this.service.canAddUsers$;
   isModalOpen = false;
